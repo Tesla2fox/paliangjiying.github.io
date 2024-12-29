@@ -44,7 +44,7 @@ author:
   bitbucket        : # Username - Update with your username on the site
   codepen          : # Username
   dribbble         : # Username
-  github           : "https://github.com/Tesla2fox"
+  github           : "Tesla2fox"
   kaggle           : # Username  
   stackoverflow    : # User number or user number and name (i.e., use "1" or "1/jeff-atwood")    
 
@@ -212,7 +212,7 @@ kramdown:
 
 # These settings control the types of collections used by the template
 collections:
-  ml:
+  machine_learning:
     output: true
     permalink: /:collection/:path/
   # publications:
@@ -246,13 +246,13 @@ defaults:
     values:
       layout: single
       author_profile: true
-  # _ml
+  # _machine_learning
   - scope:
       path: ""
-      type: ml
+      type: machine_learning
     values:
       layout: single
-      author_profile: true
+      author_profile: false
       share: true
       comments: true
   # _publications
