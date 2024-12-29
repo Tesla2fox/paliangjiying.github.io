@@ -11,36 +11,36 @@ date: 2024-12-29
 
 ## Area Under the Uplift Curve (AUUC)
 
-In uplift research, to evaluate the rankability of the uplift model $y$, one can first plot an uplift curve which ranks individual samples descendingly according to ==𝑝𝑟𝑒𝑑𝑖𝑐𝑡𝑒𝑑 uplift value==  $\hat{\tau}$ (in X-axis) and cumulatively sums ==the 𝑜𝑏𝑠𝑒𝑟𝑣𝑒𝑑 uplift value== (in Y-axis). The AUUC is then the area under this curve. There are actually multiple variants of uplift curves proposed in the recent literature. Their differences mainly lie in 1) if ranking the data separately per group or jointly over all data, and 2) if expressing volumes in absolute or relative numbers.
+In uplift research, to evaluate the rankability of the uplift model $$y$$, one can first plot an uplift curve which ranks individual samples descendingly according to ==𝑝𝑟𝑒𝑑𝑖𝑐𝑡𝑒𝑑 uplift value==  $$\hat{\tau}$$ (in X-axis) and cumulatively sums ==the 𝑜𝑏𝑠𝑒𝑟𝑣𝑒𝑑 uplift value== (in Y-axis). The AUUC is then the area under this curve. There are actually multiple variants of uplift curves proposed in the recent literature. Their differences mainly lie in 1) if ranking the data separately per group or jointly over all data, and 2) if expressing volumes in absolute or relative numbers.
 
 
 
-First, we denote the total number of treated and control instances, among the top-𝑘 individuals $𝜋(D,𝑘) $ranked by uplift model $𝑓$ over the whole dataset $D$ as
+First, we denote the total number of treated and control instances, among the top-𝑘 individuals $${\pi}(D,𝑘)$$ ranked by uplift model $$𝑓$$ over the whole dataset $$D$$ as
 
 
-$N_{\pi}^{T}(D, k) = \sum_{(x_i, t_i, y_i) \in \pi(D, k)} I(t_i = 1)$
+$$N_{\pi}^{T}(D, k) = \sum_{(x_i, t_i, y_i) \in \pi(D, k)} I(t_i = 1)$$
 
-$N_{\pi}^{C}(D, k) = \sum_{(x_i, t_i, y_i) \in \pi(D, k)} I(t_i = 0)$
+$$N_{\pi}^{C}(D, k) = \sum_{(x_i, t_i, y_i) \in \pi(D, k)} I(t_i = 0)$$
 
-$N_{\pi}^{T}(D, k)$ means the numbe of the treatment set, $N_{\pi}^{C}(D, k)$ means the numbe of  the control set. 
+$$N_{\pi}^{T}(D, k)$$ means the numbe of the treatment set, $$N_{\pi}^{C}(D, k)$$ means the numbe of  the control set. 
 
 -------
 
-$R^T_{\pi}(D,k) = \sum_{(x_i,t_i,y_i) \in \pi(D,k)} y_i I(t_i = 1)$
+$$R^T_{\pi}(D,k) = \sum_{(x_i,t_i,y_i) \in \pi(D,k)} y_i I(t_i = 1)$$
 
-$R^C_{\pi}(D,k) = \sum_{(x_i,t_i,y_i) \in \pi(D,k)} y_i I(t_i = 0)$
+$$R^C_{\pi}(D,k) = \sum_{(x_i,t_i,y_i) \in \pi(D,k)} y_i I(t_i = 0)$$
 
-$R_{\pi}^{T}(D, k)$ means the total response of treatment set, $R_{\pi}^{C}(D, k)$ means the total repsonse of the control set. 
+$$R_{\pi}^{T}(D, k)$$ means the total response of treatment set, $$R_{\pi}^{C}(D, k)$$ means the total repsonse of the control set. 
 
 -------------
 
 The each point value for the uplift curve can be obtained with
 
-$V_u(f,k) = \left( \frac{R^T_{\pi}(D,k)}{N^T_{\pi}(D,k)} - \frac{R^C_{\pi}(D,k)}{N^C_{\pi}(D,k)} \right) \times (N^T_{\pi}(D,k) + N^C_{\pi}(D,k))$
+$$V_u(f,k) = \left( \frac{R^T_{\pi}(D,k)}{N^T_{\pi}(D,k)} - \frac{R^C_{\pi}(D,k)}{N^C_{\pi}(D,k)} \right) \times (N^T_{\pi}(D,k) + N^C_{\pi}(D,k))$$
 
 Finally, 
 
-$AUUC(f) = \int_0^1 V_u(f, x) \, dx = \frac{1}{n} \sum_{k=1}^{n} V_u(f, k) \approx \sum_{p=1}^{100} V_u\left(f, \frac{p}{100}\right)$
+$$AUUC(f) = \int_0^1 V_u(f, x) \, dx = \frac{1}{n} \sum_{k=1}^{n} V_u(f, k) \approx \sum_{p=1}^{100} V_u\left(f, \frac{p}{100}\right)$$
 
 **remark** 
 
@@ -50,7 +50,7 @@ $AUUC(f) = \int_0^1 V_u(f, x) \, dx = \frac{1}{n} \sum_{k=1}^{n} V_u(f, k) \appr
 
 The each point value for the ==QINI== curve is shown as follows.
 
-$V_u(f,k) = R^T_{\pi}(D,k) - \frac{N^T_{\pi}(D,k) }{N^C_{\pi}(D,k)} \times R^C_{\pi}(D,k) $
+$$V_u(f,k) = R^T_{\pi}(D,k) - \frac{N^T_{\pi}(D,k) }{N^C_{\pi}(D,k)} \times R^C_{\pi}(D,k) $$
 
 
 
@@ -67,7 +67,7 @@ To calculate the Kendall Rank Correlation Coefficient (Kendall's tau), you can f
 ### Steps to Calculate Kendall's Tau
 
 1. **Prepare Your Data**:
-   - Assume you have two variables \(X\) and \(Y\), each with \(n\) observations, denoted as \((x_1, y_1), (x_2, y_2), \ldots, (x_n, y_n)\).
+   - Assume you have two variables \\(X\\) and \\(Y\\), each with \\(n\\) observations, denoted as \\((x_1, y_1), (x_2, y_2), \ldots, (x_n, y_n)\\).
 
 2. **Consider All Possible Pairs**:
    - Look at all possible pairs of observations \((i, j)\) where \(1 \leq i < j \leq n\). There will be \(\frac{n(n-1)}{2}\) such pairs.
@@ -83,9 +83,7 @@ To calculate the Kendall Rank Correlation Coefficient (Kendall's tau), you can f
 
 5. **Calculate Kendall's Tau**:
    - The basic formula for Kendall's tau is:
-     \[
-     \tau = \frac{C - D}{\frac{1}{2} n (n-1)}
-     \]
+     $$ \tau = \frac{C - D}{\frac{1}{2} n (n-1)} $$
    - When there are ties in the data, an adjusted version known as Kendall's tau-b should be used:
      \[
      \tau_b = \frac{C - D}{\sqrt{(C + D + T_x)(C + D + T_y)}}
